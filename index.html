@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartShop | E-Commerce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <nav class="sticky top-0 z-50 bg-white shadow-md py-4 px-8 flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-indigo-600">SmartShop</h1>
+        <ul class="hidden md:flex space-x-6 font-medium" id="nav-links">
+            <li><a href="#" class="nav-item text-indigo-600" data-section="home">Home</a></li>
+            <li><a href="#products" class="nav-item hover:text-indigo-600" data-section="products">Products</a></li>
+            <li><a href="#reviews" class="nav-item hover:text-indigo-600" data-section="reviews">Reviews</a></li>
+            <li><a href="#contact" class="nav-item hover:text-indigo-600" data-section="contact">Contact</a></li>
+        </ul>
+        <div class="flex items-center space-x-4">
+            <div class="bg-indigo-100 px-4 py-2 rounded-lg">
+                <span class="text-sm font-semibold text-indigo-800">Balance: <span id="balance-amount">1000</span> BDT</span>
+                <button id="add-money" class="ml-2 bg-indigo-600 text-white px-2 rounded hover:bg-indigo-700">+</button>
+            </div>
+            <div class="relative">
+                <i class="fa-solid fa-cart-shopping text-xl cursor-pointer" id="cart-icon"></i>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative h-[400px] overflow-hidden">
+        <div id="slider" class="flex transition-transform duration-500 ease-in-out h-full">
+            <div class="min-w-full flex items-center justify-center"><img class="min-w-full" src='./assets/image2.jpg' alt="" srcset=""></div>
+            <div class="min-w-full flex items-center justify-center"><img class="min-w-full" src='./assets/image.avif' alt="" srcset=""></div>
+            <div class="min-w-full flex items-center justify-center"><img class="min-w-full" src='./assets/image1.png' alt="" srcset=""></div>
+            
+        </div>
+        <button id="prev" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 p-3 rounded-full hover:bg-white/50">❮</button>
+        <button id="next" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 p-3 rounded-full hover:bg-white/50">❯</button>
+    </header>
+
+    <main class="max-w-7xl mx-auto p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-4">
+        
+        <section id="products" class="lg:col-span-3">
+            <h2 class="text-3xl font-bold mb-6">Featured Products</h2>
+            <div id="product-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <p class="animate-pulse">Loading products...</p>
+            </div>
+        </section>
+
+        <aside class="bg-white p-6 rounded-xl shadow-lg h-fit sticky top-24">
+            <h2 class="text-xl font-bold mb-4 border-b pb-2">Your Cart</h2>
+            <div id="cart-items" class="space-y-4 max-h-60 overflow-y-auto mb-4">
+                <p class="text-gray-500 text-sm italic">Cart is empty</p>
+            </div>
+            <div class="border-t pt-4 space-y-2 text-sm">
+                <div class="flex justify-between"><span>Subtotal:</span> <span id="subtotal">0</span> BDT</div>
+                <div class="flex justify-between"><span>Shipping:</span> <span id="shipping">50</span> BDT</div>
+                <div class="flex justify-between text-green-600 font-bold"><span>Discount:</span> -<span id="discount">0</span> BDT</div>
+                <hr>
+                <div class="flex justify-between text-lg font-bold"><span>Total:</span> <span id="final-total">0</span> BDT</div>
+            </div>
+            <input type="text" id="coupon-input" placeholder="Coupon: SMART10" class="w-full mt-4 p-2 border rounded text-sm">
+            <button id="apply-coupon" class="w-full mt-2 bg-gray-800 text-white py-2 rounded hover:bg-black transition">Apply Coupon</button>
+            <p id="warning-msg" class="text-red-500 text-xs mt-2 hidden">Insufficient Balance!</p>
+        </aside>
+    </main>
+
+    <section id="reviews" class="bg-gray-100 py-12 px-8">
+        <h2 class="text-center text-3xl font-bold mb-8">Customer Reviews</h2>
+        <div id="review-container" class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow italic text-center">
+            </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-10 px-8 mt-12 text-center">
+        <p>&copy; 2026 SmartShop - Tools and Technologies Project</p>
+        <button id="back-to-top" class="mt-4 text-indigo-400 hover:underline">Back to Top ↑</button>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
