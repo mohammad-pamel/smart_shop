@@ -226,7 +226,7 @@ function fetchReviews() {
 const searchInput = document.createElement('input');
 searchInput.id = "search-input";
 searchInput.placeholder = "Search products...";
-searchInput.className = "w-full mb-6 p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-indigo-400 outline-none";
+searchInput.className = "w-1/2 p-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-indigo-400 outline-none";
 document.querySelector('#products h2').after(searchInput);
 
 searchInput.addEventListener('input', (e) => {
