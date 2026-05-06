@@ -1,11 +1,10 @@
-// --- Global State ---
-// Initialize balance from localStorage or default to 1000
+// Initialize balance from localStorage
 let balance = localStorage.getItem('balance') ? parseInt(localStorage.getItem('balance')) : 1000;
 let cart = [];
 let currentSlide = 0;
-let allProducts = []; // Store fetched products for filtering/searching
+let allProducts = [];
 
-// --- Initialize App ---
+//Initialize App
 document.addEventListener('DOMContentLoaded', () => {
     updateBalanceUI();
     fetchProducts();
@@ -14,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupMobileMenu();
 });
 
-// --- 1. Navbar & Balance Logic ---
+//Navbar & Balance Logic
 function updateBalanceUI() {
     document.getElementById('balance-amount').innerText = balance;
     localStorage.setItem('balance', balance);
@@ -49,7 +48,7 @@ function setupMobileMenu() {
     }
 }
 
-// --- 2. Sliding Banner ---
+//Sliding Banner
 const slider = document.getElementById('slider');
 const totalSlides = 3; 
 
@@ -62,7 +61,7 @@ document.getElementById('next').addEventListener('click', () => moveSlide(1));
 document.getElementById('prev').addEventListener('click', () => moveSlide(-1));
 function startAutoSlider() { setInterval(() => moveSlide(1), 5000); }
 
-// --- 3. Product Management (API + Search) ---
+//Product Management (API + Search)
 async function fetchProducts() {
     try {
         const res = await fetch('https://fakestoreapi.com/products');
@@ -107,7 +106,7 @@ function displayProducts(products) {
     });
 }
 
-// --- 4. Shopping Cart System ---
+//Shopping Cart System
 function addToCart(id, title, price) {
     const currentTotal = calculateTotal();
     
@@ -174,7 +173,7 @@ function updateFinalTotal() {
     document.getElementById('final-total').innerText = final > 0 ? final.toFixed(2) : 0;
 }
 
-// --- 5. Coupon Logic ---
+//Coupon Logic
 document.getElementById('apply-coupon').addEventListener('click', () => {
     const code = document.getElementById('coupon-input').value.trim();
     const subtotal = parseFloat(document.getElementById('subtotal').innerText);
@@ -194,7 +193,7 @@ document.getElementById('apply-coupon').addEventListener('click', () => {
     }
 });
 
-// --- 6. Review Carousel ---
+//Review Carousel
 const reviews = [
     { name: "Pamel", text: "Quality is top-notch! Best shop in town.", rating: 5 },
     { name: "Ashraf", text: "Fast delivery and great support.", rating: 4 },
@@ -207,7 +206,7 @@ function fetchReviews() {
     const container = document.getElementById('review-container');
     const updateReview = () => {
         const r = reviews[reviewIdx];
-        container.classList.add('opacity-0'); // Fade effect
+        container.classList.add('opacity-0'); 
         setTimeout(() => {
             container.innerHTML = `
                 <i class="fa-solid fa-quote-left text-3xl mb-4 text-indigo-400 opacity-50"></i>
@@ -223,9 +222,7 @@ function fetchReviews() {
     setInterval(updateReview, 5000);
 }
 
-// --- 7. Additional Feature: Search Logic ---
-// (Mandatory requirement: Product Search/Filter)
-// Note: Ensure you add <input id="search-input"> in your HTML for this to work
+//Additional Feature: Search Logic
 const searchInput = document.createElement('input');
 searchInput.id = "search-input";
 searchInput.placeholder = "Search products...";
@@ -241,7 +238,20 @@ searchInput.addEventListener('input', (e) => {
     displayProducts(filtered);
 });
 
-// --- 8. Footer & Scroll ---
+// Contact
+const sendMessage = document.getElementById('send').addEventListener('click', () => {
+    // e.preventDefault();
+    const message = document.getElementById('message').value;
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+
+    if(message !== '' && name !== '' && email !== '')
+    {
+        alert('Thanks')
+    }
+}    
+)
+//Footer & Scroll 
 document.getElementById('back-to-top').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
